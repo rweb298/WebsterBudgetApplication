@@ -18,7 +18,7 @@ import java.nio.file.Path;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private static final String DIRECTORY = "/WebsterBudgetTest";
+    private static final String DIRECTORY = "/WebsterBudget";
     private static String absolutePath = "";
 
     @Override
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         requestWritePermissions();
-        requestReadPermissions();
-        createDirectory();
+        //requestReadPermissions();
+       // createDirectory();
         Button btnCreateBudget = (Button) findViewById(R.id.btnStartNewBudget);
         Button btnEditBudget = (Button) findViewById(R.id.btnEditBudget);
 
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
         public void requestWritePermissions() {
+            //if write permission is not granted then ask for write permissions
             if (ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
                 ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
 
