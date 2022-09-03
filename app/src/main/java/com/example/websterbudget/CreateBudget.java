@@ -27,13 +27,13 @@ public class CreateBudget extends AppCompatActivity {
     private static final String TAG = "CreateBudget";
     private static final int LENGTH_SHORT = 50;
     private static String msg = "Lets go through all of your finances";
-    private int primaryIncomeNum;
-    private int otherIncomeNum;
-    private int mortgageNum;
-    private int electricNum;
-    private int cableNum;
-    private int waterNum;
-    private int homeInsuranceNum;
+    private double primaryIncomeNum;
+    private double otherIncomeNum;
+    private double mortgageNum;
+    private double electricNum;
+    private double cableNum;
+    private double waterNum;
+    private double homeInsuranceNum;
     private TextView primaryIncome;
     private TextView otherIncome;
     private TextView mortgage;
@@ -56,21 +56,21 @@ public class CreateBudget extends AppCompatActivity {
         toast.show();
         //Store the budget numbers
         primaryIncome = findViewById(R.id.primaryIncomeNumber);
-        primaryIncomeNum = Integer. parseInt(primaryIncome.getText().toString());
+        primaryIncomeNum = Double. parseDouble(primaryIncome.getText().toString());
         otherIncome = findViewById(R.id.otherIncomeNumber);
-        otherIncomeNum = Integer.parseInt(otherIncome.getText().toString());
+        otherIncomeNum = Double.parseDouble(otherIncome.getText().toString());
         mortgage = findViewById(R.id.mortgageRentNumber);
-        mortgageNum = Integer.parseInt(mortgage.getText().toString());
+        mortgageNum = Double.parseDouble(mortgage.getText().toString());
         electric = findViewById(R.id.electricGasNumber);
-        electricNum = Integer.parseInt(electric.getText().toString());
+        electricNum = Double.parseDouble(electric.getText().toString());
         cable = findViewById(R.id.cableInternetNumber);
-        cableNum = Integer.parseInt(cable.getText().toString());
+        cableNum = Double.parseDouble(cable.getText().toString());
         water = findViewById(R.id.waterTrashNumber);
-        waterNum = Integer.parseInt(water.getText().toString());
+        waterNum = Double.parseDouble(water.getText().toString());
         homeInsurance = findViewById(R.id.homeInsuranceNumber);
-        homeInsuranceNum = Integer.parseInt(homeInsurance.getText().toString());
+        homeInsuranceNum = Double.parseDouble(homeInsurance.getText().toString());
         //adding the expense numbers to an array list to pass into next screen
-        ArrayList<Integer> incomeHouseExpenses = new ArrayList<Integer>();
+        ArrayList<Double> incomeHouseExpenses = new ArrayList<Double>();
         incomeHouseExpenses.add(primaryIncomeNum);
         incomeHouseExpenses.add(otherIncomeNum);
         incomeHouseExpenses.add(mortgageNum);
@@ -80,6 +80,7 @@ public class CreateBudget extends AppCompatActivity {
         incomeHouseExpenses.add(homeInsuranceNum);
         btnBack = findViewById(R.id.btnBack);
         btnNext = findViewById(R.id.btnNext);
+        //setting a listener for the textViews and Buttons
         primaryIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,6 +157,7 @@ public class CreateBudget extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+    //Clearing the default 0 when the user clicks on the textview
     public void clearDefaultValue(TextView txtView) {
         txtView.setText("");
     }
