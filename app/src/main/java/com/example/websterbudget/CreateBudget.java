@@ -80,6 +80,48 @@ public class CreateBudget extends AppCompatActivity {
         incomeHouseExpenses.add(homeInsuranceNum);
         btnBack = findViewById(R.id.btnBack);
         btnNext = findViewById(R.id.btnNext);
+        primaryIncome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearDefaultValue(primaryIncome);
+            }
+        });
+        otherIncome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearDefaultValue(otherIncome);
+            }
+        });
+        mortgage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearDefaultValue(mortgage);
+            }
+        });
+        electric.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearDefaultValue(electric);
+            }
+        });
+        cable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearDefaultValue(cable);
+            }
+        });
+        water.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearDefaultValue(water);
+            }
+        });
+        homeInsurance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearDefaultValue(homeInsurance);
+            }
+        });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +155,9 @@ public class CreateBudget extends AppCompatActivity {
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+    public void clearDefaultValue(TextView txtView) {
+        txtView.setText("");
     }
     }
 
