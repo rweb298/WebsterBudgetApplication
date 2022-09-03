@@ -37,7 +37,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/secondaryIncomeNumber"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/otherIncomeNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toEndOf="@+id/primaryIncome"
@@ -53,18 +54,19 @@
         android:layout_marginEnd="48dp"
         android:clickable="false"
         android:text="Other Income Total:"
-        app:layout_constraintEnd_toStartOf="@+id/secondaryIncomeNumber"
+        app:layout_constraintEnd_toStartOf="@+id/otherIncomeNumber"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/primaryIncome" />
 
     <EditText
-        android:id="@+id/secondaryIncomeNumber"
+        android:id="@+id/otherIncomeNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:text="0"
         app:layout_constraintStart_toStartOf="@+id/primaryIncomeNumber"
         app:layout_constraintTop_toBottomOf="@+id/primaryIncome" />
 
@@ -100,8 +102,9 @@
         android:layout_marginTop="76dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:text="0"
         app:layout_constraintStart_toEndOf="@+id/mortgageRent"
-        app:layout_constraintTop_toBottomOf="@+id/secondaryIncomeNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/otherIncomeNumber" />
 
     <TextView
         android:id="@+id/electricGas"
@@ -121,6 +124,7 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mortgageRentNumber" />
 
@@ -142,6 +146,7 @@
         android:layout_marginEnd="18dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/electricGasNumber" />
 
@@ -162,6 +167,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:text="0"
         app:layout_constraintStart_toStartOf="@+id/cableInternetNumber"
         app:layout_constraintTop_toBottomOf="@+id/cableInternetNumber" />
 
@@ -182,6 +188,7 @@
         android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="numberDecimal"
+        android:text="0"
         app:layout_constraintStart_toStartOf="@+id/waterTrashNumber"
         app:layout_constraintTop_toTopOf="@+id/waterTrashNumber" />
 
@@ -190,18 +197,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="70dp"
         android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeInsuranceNumber"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginStart="32dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeInsurance"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
