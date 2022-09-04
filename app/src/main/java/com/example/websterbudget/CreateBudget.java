@@ -43,6 +43,7 @@ public class CreateBudget extends AppCompatActivity {
     private TextView homeInsurance;
     private Button btnBack;
     private Button btnNext;
+    private ArrayList<Double> incomeHouseExpenses;
 
 
     @Override
@@ -70,7 +71,7 @@ public class CreateBudget extends AppCompatActivity {
         homeInsurance = findViewById(R.id.homeInsuranceNumber);
         homeInsuranceNum = Double.parseDouble(homeInsurance.getText().toString());
         //adding the expense numbers to an array list to pass into next screen
-        ArrayList<Double> incomeHouseExpenses = new ArrayList<Double>();
+        incomeHouseExpenses = new ArrayList<Double>();
         incomeHouseExpenses.add(primaryIncomeNum);
         incomeHouseExpenses.add(otherIncomeNum);
         incomeHouseExpenses.add(mortgageNum);
@@ -130,16 +131,17 @@ public class CreateBudget extends AppCompatActivity {
                 backButton();
             }
         });
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "Inside next button");
+                Intent goToNext = new Intent(CreateBudget.this, CreateAdditionalExpenses.class);
+                //putting data for next page
+                goToNext.putExtra("StoredData", incomeHouseExpenses);
+                startActivity(goToNext);
+            }
+        });
 
-        //Store the data and move it to next view
-        /*
-        Intent storeData = new Intent(CreateBudget.this, CreateAdditionalExpenses.class);
-        ArrayList<String> storedData = new ArrayList<String>();
-        storedData.add("Test Data 1");
-        storedData.add("Test Data 2");
-        storeData.putExtra("StoredData", storedData);
-        startActivity(storeData);
-         */
 
 
     }
