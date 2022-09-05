@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -55,32 +56,17 @@ public class CreateBudget extends AppCompatActivity {
         int duration= Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-        //Store the budget numbers
         primaryIncome = findViewById(R.id.primaryIncomeNumber);
-        primaryIncomeNum = Double. parseDouble(primaryIncome.getText().toString());
         otherIncome = findViewById(R.id.otherIncomeNumber);
-        otherIncomeNum = Double.parseDouble(otherIncome.getText().toString());
         mortgage = findViewById(R.id.mortgageRentNumber);
-        mortgageNum = Double.parseDouble(mortgage.getText().toString());
         electric = findViewById(R.id.electricGasNumber);
-        electricNum = Double.parseDouble(electric.getText().toString());
         cable = findViewById(R.id.cableInternetNumber);
-        cableNum = Double.parseDouble(cable.getText().toString());
         water = findViewById(R.id.waterTrashNumber);
-        waterNum = Double.parseDouble(water.getText().toString());
         homeInsurance = findViewById(R.id.homeInsuranceNumber);
-        homeInsuranceNum = Double.parseDouble(homeInsurance.getText().toString());
-        //adding the expense numbers to an array list to pass into next screen
-        incomeHouseExpenses = new ArrayList<Double>();
-        incomeHouseExpenses.add(primaryIncomeNum);
-        incomeHouseExpenses.add(otherIncomeNum);
-        incomeHouseExpenses.add(mortgageNum);
-        incomeHouseExpenses.add(electricNum);
-        incomeHouseExpenses.add(cableNum);
-        incomeHouseExpenses.add(waterNum);
-        incomeHouseExpenses.add(homeInsuranceNum);
+
         btnBack = findViewById(R.id.btnBack);
         btnNext = findViewById(R.id.btnNext);
+
         //setting a listener for the textViews and Buttons
         primaryIncome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,13 +117,38 @@ public class CreateBudget extends AppCompatActivity {
                 backButton();
             }
         });
+
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "Inside next button");
+                primaryIncomeNum = Double.parseDouble(primaryIncome.getText().toString());
+                Log.d(TAG, "Primary Income Number = " + primaryIncomeNum);
+                otherIncomeNum = Double.parseDouble(otherIncome.getText().toString());
+                mortgageNum = Double.parseDouble(mortgage.getText().toString());
+                electricNum = Double.parseDouble(electric.getText().toString());
+                cableNum = Double.parseDouble(cable.getText().toString());
+                homeInsuranceNum = Double.parseDouble(homeInsurance.getText().toString());
+                waterNum = Double.parseDouble(water.getText().toString());
+
+
+                //adding the expense numbers to an array list to pass into next screen
+                incomeHouseExpenses = new ArrayList<Double>();
+                incomeHouseExpenses.add(primaryIncomeNum);
+                incomeHouseExpenses.add(otherIncomeNum);
+                incomeHouseExpenses.add(mortgageNum);
+                incomeHouseExpenses.add(electricNum);
+                incomeHouseExpenses.add(cableNum);
+                incomeHouseExpenses.add(waterNum);
+                incomeHouseExpenses.add(homeInsuranceNum);
+                Log.d(TAG, incomeHouseExpenses.toString());
+
                 Intent goToNext = new Intent(CreateBudget.this, CreateAdditionalExpenses.class);
                 //putting data for next page
-                goToNext.putExtra("StoredData", incomeHouseExpenses);
+                Bundle args = new Bundle();
+                args.putSerializable("ARRAYLIST", (Serializable)incomeHouseExpenses);
+                goToNext.putExtra("BUNDLE", args);
                 startActivity(goToNext);
             }
         });
@@ -161,7 +172,7 @@ public class CreateBudget extends AppCompatActivity {
     }
     //Clearing the default 0 when the user clicks on the textview
     public void clearDefaultValue(TextView txtView) {
-        txtView.setText("");
+        txtView.setText(null);
     }
     }
 
